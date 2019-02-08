@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <title>NER Application</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script
+   <!-- <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
+   <!-- <script
             src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>-->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function parseText(strType){
+            var input = $("#input").val();
+            $.ajax({
+                type: 'POST',
+                url:'http://localhost:8080/api/v1/ner?type=' + strType,
+                contentType:'text/plain; charset=UTF-8',
+                data: input,
+                success:function(response){
+                    var result = "";
+                    $.each(response, function(index, value){
+                        result = result + "<span class='badge badge-success'>" + value + "</span>&nbsp;";
+                    });
+                    $("#result").html(result);
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <form>
@@ -20,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="type">Select Type</label>
-                <select class="form-control" id="type">
+                <select class="form-control" id="type" onchange="parseText(this.value)">
                     <option value="">Select Type</option>
                     <option value="PERSON">Person</option>
                     <option value="CITY">City</option>
