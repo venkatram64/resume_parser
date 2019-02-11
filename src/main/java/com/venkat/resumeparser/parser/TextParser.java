@@ -17,8 +17,8 @@ public class TextParser {
         stanfordCoreNLP.annotate(coreDocument);
 
         List<CoreLabel> coreLabelList = coreDocument.tokens();
-        for (CoreLabel ccoreLabel : coreLabelList){
-            System.out.println(ccoreLabel.originalText());
+        for (CoreLabel coreLabel : coreLabelList){
+            System.out.println(coreLabel.originalText());
         }
     }
 
@@ -29,8 +29,8 @@ public class TextParser {
         stanfordCoreNLP.annotate(coreDocument);
 
         List<CoreSentence> coreSentences = coreDocument.sentences();
-        for (CoreSentence ccoreSentence : coreSentences){
-            System.out.println(ccoreSentence.toString());
+        for (CoreSentence coreSentence : coreSentences){
+            System.out.println(coreSentence.toString());
         }
     }
 
@@ -41,9 +41,9 @@ public class TextParser {
         stanfordCoreNLP.annotate(coreDocument);
 
         List<CoreLabel> coreLabelList = coreDocument.tokens();
-        for (CoreLabel ccoreLabel : coreLabelList){
-            String pos = ccoreLabel.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-            System.out.println(ccoreLabel.originalText() + "=" + pos);
+        for (CoreLabel coreLabel : coreLabelList){
+            String pos = coreLabel.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+            System.out.println(coreLabel.originalText() + "=" + pos);
         }
     }
 

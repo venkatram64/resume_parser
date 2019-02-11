@@ -6,6 +6,7 @@ public enum Type {
     STATE_OR_PROVINCE("State_or_Province"),
     COUNTRY("Country"),
     EMAIL("Email"),
+    PHONENUMBER("PhoneNumber"),
     TITLE("Title");
 
     private String type;
